@@ -1,8 +1,6 @@
 const mongoose = require("../database/db")
 const bcrypt = require('bcryptjs')
 
-
-
 const UserSchema = new mongoose.Schema({
    name: {
       type: String,
@@ -20,8 +18,8 @@ const UserSchema = new mongoose.Schema({
       select: false
    },
    createdAt: {
-      type: Date,
-      default: Date.now,
+      type: String,
+      default: new Intl.DateTimeFormat('pt-BR', {dateStyle: 'short', timeStyle: 'short'}).format(Date.now())
    },
 });
 
