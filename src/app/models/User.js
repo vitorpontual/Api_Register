@@ -1,5 +1,6 @@
-const mongoose = require("../database/db")
+const mongoose = require("../../database/db")
 const bcrypt = require('bcryptjs')
+const { date } = require('../../lib/utils')
 
 const UserSchema = new mongoose.Schema({
    name: {
@@ -17,9 +18,17 @@ const UserSchema = new mongoose.Schema({
       require:true,
       select: false
    },
-   createdAt: {
+   passwordResetToken: {
       type: String,
-      default: new Intl.DateTimeFormat('pt-BR', {dateStyle: 'short', timeStyle: 'short'}).format(Date.now())
+      select: false,
+   },
+   passwordResetExpires: {
+      type: Date,
+      select: false
+   },
+   createdAt: {
+      type: Date,
+      default: date(Date.now())
    },
 });
 
